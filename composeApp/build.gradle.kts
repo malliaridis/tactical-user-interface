@@ -34,11 +34,14 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.media3.exoplayer)
+            implementation(libs.androidx.media3.exoplayerDash)
+            implementation(libs.androidx.media3.ui)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
+            implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
@@ -46,12 +49,13 @@ kotlin {
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(libs.caprica.vlcj)
         }
     }
 }
 
 android {
-    namespace = "app.chipmunks.helldivers.remote"
+    namespace = "com.chipmunksmedia.helldivers.remote"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -59,7 +63,7 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        applicationId = "app.chipmunks.helldivers.remote"
+        applicationId = "com.chipmunksmedia.helldivers.remote"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
@@ -90,7 +94,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "app.chipmunks.helldivers.remote"
+            packageName = "com.chipmunksmedia.helldivers.remote"
             packageVersion = "1.0.0"
         }
     }

@@ -27,7 +27,7 @@ kotlin {
 }
 
 android {
-    namespace = "app.chipmunks.helldivers.remote.shared"
+    namespace = "com.chipmunksmedia.helldivers.remote.shared"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

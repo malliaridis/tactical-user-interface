@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="app_name">Tactical Interface Unit</string>
+
+    <!-- Directions -->
+    <string name="direction_up">Up</string>
+    <string name="direction_down">Down</string>
+    <string name="direction_left">Left</string>
+    <string name="direction_right">Right</string>
+    <string name="direction_center">Center</string>
+    <string name="direction_none">None</string>
+
+    <!-- Dial Pad Styles -->
+    <string name="dp_style_swipe">Swipe Pad Design</string>
+    <string name="dp_style_circular">Circular Buttons Design</string>
+    <string name="dp_style_rectangular">WASD Buttons Design</string>
+
+    <!-- Preference Key Mappings -->
+    <string name="pk_change_dial_pad_style">Change Dial Pad Design</string>
+    <string name="pk_source_code">Source Code</string>
+    <string name="pk_report_bug">Report Bug</string>
+    <string name="pk_licenses">Licenses</string>
+    <string name="pk_unknown">Unknown</string>
+
+    <!-- Stratagems -->
+    <!-- Fallback display name for stratagems -->
+    <string name="st_unknown">Unknown Stratagem</string>
+
+    <!-- Type: Mission stratagems -->
+    <string name="st_eagle_rearm">Eagle Rearm</string>
+    <string name="st_hellbomb">Hellbomb</string>
+    <string name="st_reinforce">Reinforce</string>
+    <string name="st_seismic_probe">Seismic Probe</string>
+    <string name="st_resupply">Resupply</string>
+    <string name="st_sos_beacon">SOS Beacon</string>
+    <string name="st_sssd_delivery">SSSD Delivery</string>
+    <string name="st_upload_data">Upload Data</string>
+
+    <!-- Type: Supply stratagems -->
+    <!-- Variant: Support weapons -->
+    <string name="st_ac8">AC-8 Autocannon</string>
+    <string name="st_apw1">APW-1 Anti-Material Rifle</string>
+    <string name="st_arc3">ARC-3 Arc Thrower</string>
+    <string name="st_eat17">EAT-17 Expandable Anti-Tank</string>
+    <string name="st_faf14">FAF-14 SPEAR Launcher</string>
+    <string name="st_flam40">FLAM-40 Flamethrower</string>
+    <string name="st_gl21">GL-21 Grenade Launcher</string>
+    <string name="st_gr8">GR-8 Recoilless Rifle</string>
+    <string name="st_las98">LAS-98 Laser Cannon</string>
+    <string name="st_mg43">MG-43 Machine Gun</string>
+    <string name="st_m105">M-105 Stalwart</string>
+    <string name="st_rs422">RS-422 Railgun</string>
+    <!-- Variant: Backpacks -->
+    <string name="st_sh20">SH-20 Ballistic Shield Backpack</string>
+    <string name="st_sh32">SH-32 Shield Generator Pack</string>
+    <string name="st_ax_las5">AX/LAS-5 "Guard Dog"</string>
+    <string name="st_ax_ar23">AX/AR-23 "Guard Dog"</string>
+    <string name="st_b1">B-1 Supply Pack</string>
+    <string name="st_lift850">LIFT-850 Jump Pack</string>
+    <!-- Variant: Vehicles -->
+    <string name="st_exo45">EXI-45 Patriot Exosuit</string>
+
+    <!-- Type: Defensive -->
+    <string name="st_a_ac8">A/AC-8 Autocannon Sentry</string>
+    <string name="st_a_arc3">A/ARC-3 Tesla Tower</string>
+    <string name="st_a_g16">A/G-16 Gatling Sentry</string>
+    <string name="st_a_m12">A/M-12 Mortar Sentry</string>
+    <string name="st_a_m23">A/M-23 EMS Mortar Sentry</string>
+    <string name="st_a_mg43">A/MG-43 Machine Gun Sentry</string>
+    <string name="st_a_mls4x">A/MLS-4x Rocket Sentry</string>
+    <string name="st_e_mg101">E/MG-101 HMG Emplacement</string>
+    <string name="st_fx12">FX-12 Shield Generator Relay</string>
+    <string name="st_md6">MD-6 Anti-personell Minefield</string>
+    <string name="st_mdi4">MD-I4 Incendiary Minefield</string>
+
+    <!-- Type: Offensive -->
+    <!-- Variant: Orbital -->
+    <string name="st_orbital_airbust">Orbital Airbust Strike</string>
+    <string name="st_orbital_ems">Orbital EMS Strike</string>
+    <string name="st_orbital_gas">Orbital Gas Strike</string>
+    <string name="st_orbital_gatling">Orbital Gatling Barrage</string>
+    <string name="st_orbital_laser">Orbital Laser</string>
+    <string name="st_orbital_precision">Orbital Precision Strike</string>
+    <string name="st_orbital_railcannon">Orbital Railcannon Strike</string>
+    <string name="st_orbital_smoke">Orbital Smoke Strike</string>
+    <string name="st_orbital_walking">Orbital Walking Barrage</string>
+    <string name="st_orbital_120mm">Orbital 120MM HE Barrage</string>
+    <string name="st_orbital_380mm">Orbital 380MM HE Barrage</string>
+    <!-- Variant: Eagle -->
+    <string name="st_eagle_airstrike">Eagle Airstrike</string>
+    <string name="st_eagle_cluster">Eagle Cluster Bomb</string>
+    <string name="st_eagle_napalm">Eagle Napalm Strike</string>
+    <string name="st_eagle_smoke">Eagle Smoke Strike</string>
+    <string name="st_eagle_strafing">Eagle Strafing Run</string>
+    <string name="st_eagle_110mm">Eagle 110MM Rocket Pods</string>
+    <string name="st_eagle_500kg">Eagle 500kg Bomb</string>
+
+    <!-- Transmission Type Subtitles -->
+    <string name="st_tm_type_unknown">Unknown Transmission</string>
+    <string name="st_tm_type_audio">Audio Transmission</string>
+    <string name="st_tm_type_text">Text Transmission</string>
+    <string name="st_tm_type_video">Video Transmission</string>
+
+    <!-- Hints -->
+    <string name="hint_double_tap_for_action">Double Tap for Action</string>
+    <string name="hint_swipe_for_direction">Swipe for Direction</string>
+
+    <!-- Unassigned string resources -->
+    <string name="unknown_value">Unknown Value</string>
+    <string name="back">Back</string>
+</resources>

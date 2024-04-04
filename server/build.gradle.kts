@@ -4,10 +4,10 @@ plugins {
     application
 }
 
-group = "app.chipmunks.helldivers.remote"
+group = "com.chipmunksmedia.helldivers.remote"
 version = "1.0.0"
 application {
-    mainClass.set("app.chipmunks.helldivers.remote.ApplicationKt")
+    mainClass.set("com.chipmunksmedia.helldivers.remote.ApplicationKt")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=${extra["development"] ?: "false"}")
 }
 
