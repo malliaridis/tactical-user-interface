@@ -337,6 +337,7 @@ private fun getTransmissionDetailsById(id: String): TransmissionDetails = when (
         content = "Super Earth Daily News with Trevor Noah.",
         media = Media.VideoMedia(
             id = "random-media-id-28151",
+            // .mov files are not supported by AVPlayer (iOS)
             uri = "https://storage.googleapis.com/exoplayer-test-media-1/mkv/android-screens-lavf-56.36.100-aac-avc-main-1280x720.mkv",
             thumbnail = null,
             description = "28151",
