@@ -1,3 +1,5 @@
+package com.chipmunksmedia.helldivers.remote.ui
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
