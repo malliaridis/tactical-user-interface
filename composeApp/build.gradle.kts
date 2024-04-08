@@ -37,6 +37,7 @@ kotlin {
             implementation(libs.androidx.media3.exoplayer)
             implementation(libs.androidx.media3.exoplayerDash)
             implementation(libs.androidx.media3.ui)
+            runtimeOnly(libs.kotlinx.coroutines.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -45,11 +46,19 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(libs.decompose.decompose)
+            implementation(libs.decompose.extensions.compose)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.mvikotlin.extensions.coroutines)
+            implementation(libs.mvikotlin.main)
+            implementation(libs.mvikotlin.mvikotlin)
             implementation(projects.shared)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.caprica.vlcj)
+            runtimeOnly(libs.kotlinx.coroutines.swing)
         }
     }
 }
@@ -90,7 +99,7 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "com.chipmunksmedia.helldivers.remote.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)

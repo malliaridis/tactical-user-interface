@@ -9,9 +9,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.chipmunksmedia.helldivers.remote.model.AppPreference
 import com.chipmunksmedia.helldivers.remote.ui.components.ActionButton
 import com.chipmunksmedia.helldivers.remote.ui.components.StripesDecorator
-import com.chipmunksmedia.helldivers.remote.ui.model.AppPreference
 import com.chipmunksmedia.helldivers.remote.ui.theme.CustomColors
 import com.chipmunksmedia.helldivers.remote.ui.theme.Modifiers.border
 import com.chipmunksmedia.helldivers.remote.ui.utils.getDisplayName

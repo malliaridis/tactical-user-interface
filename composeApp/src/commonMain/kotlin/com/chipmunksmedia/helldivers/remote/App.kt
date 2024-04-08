@@ -1,4 +1,4 @@
-package com.chipmunksmedia.helldivers.remote.ui
+package com.chipmunksmedia.helldivers.remote
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,11 +22,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
+import com.chipmunksmedia.helldivers.remote.domain.foundation.AppComponent
+import com.chipmunksmedia.helldivers.remote.model.AppPreference
+import com.chipmunksmedia.helldivers.remote.model.AppTab
 import com.chipmunksmedia.helldivers.remote.model.Direction.Down
 import com.chipmunksmedia.helldivers.remote.model.Direction.Left
 import com.chipmunksmedia.helldivers.remote.model.Direction.Right
 import com.chipmunksmedia.helldivers.remote.model.Direction.Up
 import com.chipmunksmedia.helldivers.remote.model.Media
+import com.chipmunksmedia.helldivers.remote.model.PreferenceKeys
 import com.chipmunksmedia.helldivers.remote.model.Stratagem
 import com.chipmunksmedia.helldivers.remote.model.TransmissionDetails
 import com.chipmunksmedia.helldivers.remote.model.TransmissionListEntry
@@ -43,18 +48,17 @@ import com.chipmunksmedia.helldivers.remote.ui.components.terminal.TerminalActio
 import com.chipmunksmedia.helldivers.remote.ui.components.terminal.TerminalScreen
 import com.chipmunksmedia.helldivers.remote.ui.components.transmissions.TransmissionView
 import com.chipmunksmedia.helldivers.remote.ui.components.transmissions.TransmissionsList
-import com.chipmunksmedia.helldivers.remote.ui.model.AppPreference
-import com.chipmunksmedia.helldivers.remote.ui.model.AppTab
-import com.chipmunksmedia.helldivers.remote.ui.model.PreferenceKeys
 import com.chipmunksmedia.helldivers.remote.ui.theme.HelldiversTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
-fun App() {
+fun AppContent(component: AppComponent) {
+
+    // Use dark theme as base to reduce the amount of overrides in custom UI components
     HelldiversTheme(useDarkTheme = true) {
 
-        var selectedTab by remember { mutableStateOf(AppTab.Stratagems) }
+        val model by component.models.collectAsState()
 
         AppContainer(modifier = Modifier.fillMaxSize()) {
             Column(modifier = Modifier.fillMaxWidth()) {
@@ -62,11 +66,12 @@ fun App() {
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
                         .wrapContentWidth(align = Alignment.Start),
-                    selectedTabIndex = selectedTab.ordinal,
-                ) { tab -> selectedTab = tab }
+                    selectedTabIndex = model.currentTab.ordinal,
+                    onTabClick = component::onSwitchTab,
+                )
 
                 // TODO Consider moving out frame (row and column) and replacing only affected components
-                when (selectedTab) {
+                when (model.currentTab) {
                     AppTab.Stratagems -> StratagemsContent()
                     AppTab.Terminal -> TerminalContent()
                     AppTab.Transmissions -> TransmissionContent()
@@ -231,14 +236,20 @@ private fun getStratagems() = listOf(
     Stratagem(
         id = "st_reinforce",
         dialCode = arrayOf(Up, Down, Right, Left, Up),
+        availabilityCount = 10,
+        state = Stratagem.State.Available,
     ),
     Stratagem(
         id = "st_resupply",
         dialCode = arrayOf(Down, Down, Up, Right),
+        availabilityCount = 1,
+        state = Stratagem.State.Available,
     ),
     Stratagem(
         id = "st_hellbomb",
         dialCode = arrayOf(Down, Up, Left, Down, Up, Right, Down, Up),
+        availabilityCount = 1,
+        state = Stratagem.State.Available,
     ),
 )
 

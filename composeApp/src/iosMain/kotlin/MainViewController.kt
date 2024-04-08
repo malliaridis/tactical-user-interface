@@ -1,4 +1,4 @@
 import androidx.compose.ui.window.ComposeUIViewController
-import com.chipmunksmedia.helldivers.remote.ui.App
+import com.chipmunksmedia.helldivers.remote.AppContent
 
-fun MainViewController() = ComposeUIViewController { App() }
+fun MainViewController() = ComposeUIViewController { AppContent() }

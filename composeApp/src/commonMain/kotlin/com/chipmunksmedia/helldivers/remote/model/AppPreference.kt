@@ -1,4 +1,4 @@
-package com.chipmunksmedia.helldivers.remote.ui.model
+package com.chipmunksmedia.helldivers.remote.model
 
 /**
  * App preference classes provide app configuration options and settings generation.

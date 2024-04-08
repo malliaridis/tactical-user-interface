@@ -1,11 +1,11 @@
 package com.chipmunksmedia.helldivers.remote.ui.utils
 
 import androidx.compose.runtime.Composable
+import com.chipmunksmedia.helldivers.remote.model.AppPreference
 import com.chipmunksmedia.helldivers.remote.model.Direction
+import com.chipmunksmedia.helldivers.remote.model.PreferenceKeys
 import com.chipmunksmedia.helldivers.remote.model.TransmissionType
 import com.chipmunksmedia.helldivers.remote.ui.components.stratagems.DialPadStyle
-import com.chipmunksmedia.helldivers.remote.ui.model.AppPreference
-import com.chipmunksmedia.helldivers.remote.ui.model.PreferenceKeys
 import helldiversremote.composeapp.generated.resources.Res
 import helldiversremote.composeapp.generated.resources.direction_center
 import helldiversremote.composeapp.generated.resources.direction_down

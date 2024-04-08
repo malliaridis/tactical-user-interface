@@ -19,7 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.chipmunksmedia.helldivers.remote.ui.model.AppTab
+import com.chipmunksmedia.helldivers.remote.model.AppTab
 import com.chipmunksmedia.helldivers.remote.ui.theme.CustomColors
 import com.chipmunksmedia.helldivers.remote.ui.theme.Modifiers.border
 

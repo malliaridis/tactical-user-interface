@@ -16,13 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.chipmunksmedia.helldivers.remote.model.AppPreference
 import com.chipmunksmedia.helldivers.remote.model.Direction
 import com.chipmunksmedia.helldivers.remote.ui.components.StripesDecorator
 import com.chipmunksmedia.helldivers.remote.ui.components.stratagems.DialPadCircleDrawables
 import com.chipmunksmedia.helldivers.remote.ui.components.stratagems.DialPadRectangular
 import com.chipmunksmedia.helldivers.remote.ui.components.stratagems.DialPadStyle
 import com.chipmunksmedia.helldivers.remote.ui.components.stratagems.DialPadSwipe
-import com.chipmunksmedia.helldivers.remote.ui.model.AppPreference
 import com.chipmunksmedia.helldivers.remote.ui.theme.CustomColors
 import com.chipmunksmedia.helldivers.remote.ui.utils.getDirectionDisplayName
 import helldiversremote.composeapp.generated.resources.Res

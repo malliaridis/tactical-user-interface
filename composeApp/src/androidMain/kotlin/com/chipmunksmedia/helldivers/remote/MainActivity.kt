@@ -4,23 +4,28 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import com.chipmunksmedia.helldivers.remote.ui.App
+import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.defaultComponentContext
+import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
+import com.chipmunksmedia.helldivers.remote.domain.foundation.AppComponent
+import com.chipmunksmedia.helldivers.remote.domain.foundation.integration.DefaultAppComponent
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val context = defaultComponentContext()
+
         enableEdgeToEdge()
+
         setContent {
-            App()
+            AppContent(component = appComponent(context))
         }
     }
-}
 
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App()
+    private fun appComponent(componentContext: ComponentContext): AppComponent = DefaultAppComponent(
+        componentContext = componentContext,
+        storeFactory = DefaultStoreFactory(),
+    )
 }

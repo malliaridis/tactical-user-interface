@@ -1,4 +1,4 @@
-package com.chipmunksmedia.helldivers.remote.ui.model
+package com.chipmunksmedia.helldivers.remote.model
 
 /**
  * The main tabs of the app.
