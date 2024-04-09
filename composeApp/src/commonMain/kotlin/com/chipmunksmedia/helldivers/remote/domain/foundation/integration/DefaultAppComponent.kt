@@ -1,36 +1,81 @@
 package com.chipmunksmedia.helldivers.remote.domain.foundation.integration
 
-import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.mvikotlin.core.instancekeeper.getStore
+import com.arkivanov.decompose.ExperimentalDecomposeApi
+import com.arkivanov.decompose.childContext
+import com.arkivanov.decompose.router.pages.ChildPages
+import com.arkivanov.decompose.router.pages.Pages
+import com.arkivanov.decompose.router.pages.PagesNavigation
+import com.arkivanov.decompose.router.pages.childPages
+import com.arkivanov.decompose.router.pages.select
 import com.arkivanov.mvikotlin.core.store.StoreFactory
-import com.arkivanov.mvikotlin.extensions.coroutines.stateFlow
+import com.chipmunksmedia.helldivers.remote.domain.common.SystemStateComponent
+import com.chipmunksmedia.helldivers.remote.domain.common.integration.DefaultSystemsStateComponent
+import com.chipmunksmedia.helldivers.remote.domain.configuration.integration.DefaultPreferencesComponent
 import com.chipmunksmedia.helldivers.remote.domain.foundation.AppComponent
-import com.chipmunksmedia.helldivers.remote.domain.foundation.AppComponent.Model
-import com.chipmunksmedia.helldivers.remote.domain.foundation.store.AppStore
-import com.chipmunksmedia.helldivers.remote.domain.foundation.store.AppStore.Intent
-import com.chipmunksmedia.helldivers.remote.domain.foundation.store.AppStoreProvider
-import com.chipmunksmedia.helldivers.remote.domain.utils.coroutineScope
-import com.chipmunksmedia.helldivers.remote.domain.utils.map
-import com.chipmunksmedia.helldivers.remote.model.AppTab
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import com.chipmunksmedia.helldivers.remote.domain.foundation.AppComponent.Config
+import com.chipmunksmedia.helldivers.remote.domain.foundation.AppComponentContext
+import com.chipmunksmedia.helldivers.remote.domain.foundation.PageComponent
+import com.chipmunksmedia.helldivers.remote.domain.utils.toStateFlow
+import com.chipmunksmedia.helldivers.remote.model.PreferenceCollectionKeys
 import kotlinx.coroutines.flow.StateFlow
-import kotlin.coroutines.CoroutineContext
 
 class DefaultAppComponent(
-    componentContext: ComponentContext,
+    componentContext: AppComponentContext,
     storeFactory: StoreFactory,
-    mainContext: CoroutineContext = Dispatchers.Main,
-) : AppComponent, ComponentContext by componentContext {
+) : AppComponent, AppComponentContext by componentContext {
 
-    private val mainScope = coroutineScope(mainContext)
+    override val preferencesComponent = DefaultPreferencesComponent(
+        componentContext = childContext("PreferencesComponent"),
+        collectionKey = PreferenceCollectionKeys.PCK_SETTINGS,
+    )
 
-    private val store: AppStore = instanceKeeper.getStore {
-        AppStoreProvider(storeFactory = storeFactory).provide()
+    override val systemStateComponent: SystemStateComponent = DefaultSystemsStateComponent(
+        componentContext = childContext("SystemStateComponent"),
+    )
+
+    @OptIn(ExperimentalDecomposeApi::class)
+    private val navigation = PagesNavigation<Config>()
+
+    @OptIn(ExperimentalDecomposeApi::class)
+    override val pages: StateFlow<ChildPages<Config, PageComponent>> = childPages(
+        source = navigation,
+        initialPages = {
+            Pages(
+                items = listOf(
+                    Config.Stratagems,
+                    Config.Terminal,
+                    Config.Transmissions,
+                    Config.Preferences,
+                ),
+                selectedIndex = 0,
+            )
+        },
+        serializer = Config.serializer(),
+        handleBackButton = false,
+        childFactory = ::createChild,
+    ).toStateFlow()
+
+    @OptIn(ExperimentalDecomposeApi::class)
+    override fun onSwitchPage(pageIndex: Int) = navigation.select(pageIndex)
+
+    private fun createChild(
+        config: Config,
+        childComponentContext: AppComponentContext,
+    ): PageComponent = when (config) {
+        is Config.Stratagems -> StratagemsPageComponent(
+            componentContext = childComponentContext,
+        )
+
+        is Config.Terminal -> TerminalPageComponent(
+            componentContext = childComponentContext,
+        )
+
+        is Config.Transmissions -> TransmissionsPageComponent(
+            componentContext = childComponentContext,
+        )
+
+        is Config.Preferences -> PreferencesPageComponent(
+            componentContext = childComponentContext,
+        )
     }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    override val models: StateFlow<Model> = store.stateFlow.map(mainScope, stateToModel)
-
-    override fun onSwitchTab(tab: AppTab) = store.accept(Intent.SwitchTab(tab))
 }

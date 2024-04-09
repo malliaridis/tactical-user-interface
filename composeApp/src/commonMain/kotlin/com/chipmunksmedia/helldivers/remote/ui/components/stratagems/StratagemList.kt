@@ -20,6 +20,7 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 fun StratagemList(
     modifier: Modifier = Modifier,
     stratagems: List<Stratagem>,
+    highlightCount: Int = 0,
 ) = StripesDecorator(
     modifier = modifier,
     horizontalArrangement = Arrangement.Start,
@@ -37,7 +38,7 @@ fun StratagemList(
                 displayName = getStratagemDisplayName(stratagem.id),
                 drawable = getStratagemDrawableResource(stratagem.id),
                 dialCode = stratagem.dialCode,
-                highlightCount = 0,
+                highlightCount = highlightCount,
             )
         }
     }

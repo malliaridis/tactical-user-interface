@@ -61,6 +61,7 @@ import helldiversremote.composeapp.generated.resources.dial_left
 import helldiversremote.composeapp.generated.resources.dial_right
 import helldiversremote.composeapp.generated.resources.dial_top
 import helldiversremote.composeapp.generated.resources.dial_universal_pressed
+import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.absoluteValue
@@ -69,6 +70,7 @@ import kotlin.math.pow
 import kotlin.math.sin
 import kotlin.math.sqrt
 
+@Serializable
 enum class DialPadStyle {
     SwipePad,
     Circular,

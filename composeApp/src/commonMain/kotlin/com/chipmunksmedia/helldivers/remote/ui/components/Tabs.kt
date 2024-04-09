@@ -30,7 +30,7 @@ import com.chipmunksmedia.helldivers.remote.ui.theme.Modifiers.border
 fun SimplifiedTabRow(
     selectedTabIndex: Int,
     modifier: Modifier = Modifier,
-    onTabClick: (AppTab) -> Unit,
+    onTabClick: (index: Int) -> Unit,
 ) {
     Row(
         modifier = modifier
@@ -43,7 +43,7 @@ fun SimplifiedTabRow(
                 modifier = Modifier.weight(1f),
                 label = tab.name,
                 selected = selectedTabIndex == index,
-                onClick = { onTabClick(tab) }
+                onClick = { onTabClick(index) }
             )
         }
     }

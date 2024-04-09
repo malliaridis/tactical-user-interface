@@ -1,4 +1,4 @@
-package com.chipmunksmedia.helldivers.remote.ui.components
+package com.chipmunksmedia.helldivers.remote.ui.components.status
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth

@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.chipmunksmedia.helldivers.remote.model.AppPreference
 import com.chipmunksmedia.helldivers.remote.model.Direction
 import com.chipmunksmedia.helldivers.remote.ui.components.StripesDecorator
 import com.chipmunksmedia.helldivers.remote.ui.components.stratagems.DialPadCircleDrawables
@@ -34,14 +33,14 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun DialPadPreferenceSelectionPreview(
     modifier: Modifier = Modifier,
-    preference: AppPreference.SelectionPreference,
+    style: DialPadStyle,
 ) = StripesDecorator(
     modifier = modifier,
     horizontalArrangement = Arrangement.spacedBy(8.dp),
     rtl = true,
 ) {
     Box(Modifier.padding(8.dp).weight(1f)) {
-        when (DialPadStyle.valueOf(preference.selectedValue)) {
+        when (style) {
             DialPadStyle.SwipePad -> {
                 DialPadSwipe(
                     modifier = Modifier

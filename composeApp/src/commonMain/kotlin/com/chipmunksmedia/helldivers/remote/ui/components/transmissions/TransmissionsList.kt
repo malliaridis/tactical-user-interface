@@ -17,9 +17,14 @@ import com.chipmunksmedia.helldivers.remote.ui.theme.Modifiers.border
 fun TransmissionsList(
     modifier: Modifier = Modifier,
     transmissions: List<TransmissionListEntry>,
-    onTransmissionClick: (String) -> Unit,
+    onSelectTransmission: (String) -> Unit,
     selectedTransmissionId: String? = null,
-) = StripesDecorator(modifier = modifier.border(top = 1.5.dp, color = CustomColors.borderColorVariant)) {
+) = StripesDecorator(
+    modifier = modifier.border(
+        top = 1.5.dp,
+        color = CustomColors.borderColorVariant,
+    )
+) {
     LazyColumn(
         modifier = Modifier.padding(top = 1.5.dp), // to avoid overlap with border
         contentPadding = PaddingValues(8.dp),
@@ -29,7 +34,7 @@ fun TransmissionsList(
             TransmissionListItem(
                 transmission = transmission,
                 isSelected = transmission.id == selectedTransmissionId,
-                onClick = { onTransmissionClick(transmission.id) },
+                onClick = { onSelectTransmission(transmission.id) },
             )
         }
     }
