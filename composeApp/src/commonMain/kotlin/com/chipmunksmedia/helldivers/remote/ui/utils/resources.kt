@@ -272,7 +272,7 @@ internal val Long.asDateTimeValue: String
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun AppPreference.getDisplayName(): String = stringResource(
+fun AppPreference<*>.getDisplayName(): String = stringResource(
     when (id) {
         PreferenceKeys.PK_DIALPAD_STYLE -> Res.string.pk_change_dial_pad_style
         PreferenceKeys.PK_SOURCE_CODE -> Res.string.pk_source_code

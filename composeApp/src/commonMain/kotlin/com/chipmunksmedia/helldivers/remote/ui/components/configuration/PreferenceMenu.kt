@@ -25,10 +25,10 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun PreferenceMenu(
     modifier: Modifier = Modifier,
-    preferences: List<AppPreference>,
-    selectedPreference: AppPreference?,
-    onPreferenceSelected: (AppPreference) -> Unit,
-    onPreferenceUpdated: (AppPreference) -> Unit,
+    preferences: List<AppPreference<*>>,
+    selectedPreference: AppPreference<*>?,
+    onPreferenceSelected: (AppPreference<*>) -> Unit,
+    onPreferenceUpdated: (String, Any?) -> Unit,
     onNavigateBack: () -> Unit,
 ) = StripesDecorator(modifier = modifier.border(top = 1.5.dp, color = CustomColors.borderColorVariant)) {
     LazyColumn(
@@ -45,15 +45,22 @@ fun PreferenceMenu(
                 )
             }
             when (selectedPreference) {
-                is AppPreference.SelectionPreference -> {
+                is AppPreference.ListPreference -> {
                     preferenceValues(
-                        values = selectedPreference.availableValues,
-                        selectedValue = selectedPreference.selectedValue,
+                        values = selectedPreference.validValues,
+                        selectedValue = selectedPreference.value,
                         onClick = {
-                            onPreferenceUpdated(selectedPreference.copy(selectedValue = it))
+                            onPreferenceUpdated(selectedPreference.id, it)
                         }
                     )
+                    item {
+                        ActionButton(
+                            onClick = onNavigateBack,
+                            text = stringResource(Res.string.back),
+                        )
+                    }
                 }
+
 
                 else -> error("Unsupported preference nesting provided")
             }
@@ -73,13 +80,13 @@ fun PreferenceMenu(
 }
 
 fun LazyListScope.preferenceValues(
-    values: List<String>,
-    selectedValue: String,
-    onClick: (String) -> Unit,
+    values: List<Any?>,
+    selectedValue: Any?,
+    onClick: (Any?) -> Unit,
 ) = items(values) { value ->
     ActionButton(
         onClick = { onClick(value) },
-        text = getPreferenceValueDisplayName(value),
+        text = getPreferenceValueDisplayName(value.toString()),
         isSelected = selectedValue == value,
     )
 }

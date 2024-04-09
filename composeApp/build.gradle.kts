@@ -1,9 +1,10 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -25,6 +26,11 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+
+            export(libs.decompose.decompose)
+            export(libs.essenty.lifecycle)
+            export(libs.mvikotlin.main)
+            export(libs.mvikotlin.mvikotlin)
         }
     }
     
@@ -46,13 +52,14 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.decompose.decompose)
+            api(libs.decompose.decompose)
             implementation(libs.decompose.extensions.compose)
+            api(libs.essenty.lifecycle)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.datetime)
             implementation(libs.mvikotlin.extensions.coroutines)
-            implementation(libs.mvikotlin.main)
-            implementation(libs.mvikotlin.mvikotlin)
+            api(libs.mvikotlin.main)
+            api(libs.mvikotlin.mvikotlin)
             implementation(projects.shared)
         }
         desktopMain.dependencies {
@@ -95,6 +102,9 @@ android {
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
     }
+}
+dependencies {
+    implementation("org.testng:testng:7.1.0")
 }
 
 compose.desktop {
