@@ -26,6 +26,11 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+
+            export(libs.decompose.decompose)
+            export(libs.essenty.lifecycle)
+            export(libs.mvikotlin.main)
+            export(libs.mvikotlin.mvikotlin)
         }
     }
     
@@ -47,13 +52,14 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.decompose.decompose)
+            api(libs.decompose.decompose)
             implementation(libs.decompose.extensions.compose)
+            api(libs.essenty.lifecycle)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.datetime)
             implementation(libs.mvikotlin.extensions.coroutines)
-            implementation(libs.mvikotlin.main)
-            implementation(libs.mvikotlin.mvikotlin)
+            api(libs.mvikotlin.main)
+            api(libs.mvikotlin.mvikotlin)
             implementation(projects.shared)
         }
         desktopMain.dependencies {

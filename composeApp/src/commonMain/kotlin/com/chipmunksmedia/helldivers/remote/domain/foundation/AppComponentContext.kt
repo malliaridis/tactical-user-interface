@@ -23,6 +23,12 @@ class DefaultAppComponentContext(
     InstanceKeeperOwner by componentContext,
     BackHandlerOwner by componentContext {
 
+    constructor(componentContext: ComponentContext) : this(
+        componentContext = componentContext,
+        mainContext = Dispatchers.Main,
+        ioContext = Dispatchers.IO,
+    )
+
     override val componentContextFactory: ComponentContextFactory<AppComponentContext> =
         ComponentContextFactory { lifecycle, stateKeeper, instanceKeeper, backHandler ->
             val ctx = componentContext.componentContextFactory(lifecycle, stateKeeper, instanceKeeper, backHandler)
