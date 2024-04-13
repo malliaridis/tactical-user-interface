@@ -82,8 +82,8 @@ android {
         applicationId = "com.chipmunksmedia.helldivers.remote"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get()
     }
     packaging {
         resources {
@@ -103,18 +103,25 @@ android {
         debugImplementation(libs.compose.ui.tooling)
     }
 }
-dependencies {
-    implementation("org.testng:testng:7.1.0")
-}
 
 compose.desktop {
     application {
         mainClass = "com.chipmunksmedia.helldivers.remote.MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(TargetFormat.Msi, TargetFormat.Deb)
             packageName = "com.chipmunksmedia.helldivers.remote"
-            packageVersion = "1.0.0"
+
+            packageVersion = libs.versions.versionName.get()
+        }
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg)
+            packageName = "com.chipmunksmedia.helldivers.remote"
+
+            // Use modified version for Dmg to avoid "Illegal version for 'Dmg'" issue
+            // Tracked in https://github.com/JetBrains/compose-multiplatform/issues/2360
+            packageVersion = libs.versions.versionNameDmg.get()
         }
     }
 }
