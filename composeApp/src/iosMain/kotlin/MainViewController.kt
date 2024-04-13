@@ -1,6 +1,6 @@
 import androidx.compose.ui.window.ComposeUIViewController
-import com.chipmunksmedia.helldivers.remote.App
-import com.chipmunksmedia.helldivers.remote.domain.foundation.AppComponent
+import com.malliaridis.tui.App
+import com.malliaridis.tui.domain.foundation.AppComponent
 
 fun MainViewController(appComponent: AppComponent) = ComposeUIViewController {
     App(appComponent)

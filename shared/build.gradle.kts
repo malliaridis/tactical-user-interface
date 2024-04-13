@@ -27,7 +27,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.chipmunksmedia.helldivers.remote.shared"
+    namespace = "com.malliaridis.tui.shared"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

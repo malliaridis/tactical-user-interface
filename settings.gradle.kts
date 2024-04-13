@@ -1,4 +1,4 @@
-rootProject.name = "HelldiversRemote"
+rootProject.name = "TacticalUserInterface"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
