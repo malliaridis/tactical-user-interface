@@ -2,8 +2,9 @@
 versionCode = "1"
 versionName = "0.1.0"
 
-# Use version 1.0 for Dmg target format for pre-releases
-versionNameDmg = "1.0"
+# Use modified version for pre-releases to comply to Dmg and Msi format requirements
+# Tracked in https://github.com/JetBrains/compose-multiplatform/issues/2360
+versionNameAlt = "1.0.0"
 
 agp = "8.2.0"
 android-compileSdk = "34"

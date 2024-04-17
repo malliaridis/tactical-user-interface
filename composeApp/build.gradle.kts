@@ -24,7 +24,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "TacticalUserInterface"
             isStatic = true
 
             export(libs.decompose.decompose)
@@ -71,7 +71,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.chipmunksmedia.helldivers.remote"
+    namespace = "com.malliaridis.tui"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -79,7 +79,7 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        applicationId = "com.chipmunksmedia.helldivers.remote"
+        applicationId = "com.malliaridis.tui"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = libs.versions.versionCode.get().toInt()
@@ -106,22 +106,15 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "com.chipmunksmedia.helldivers.remote.MainKt"
+        mainClass = "com.malliaridis.tui.MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.chipmunksmedia.helldivers.remote"
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "TacticalUserInterface"
 
-            packageVersion = libs.versions.versionName.get()
-        }
-
-        nativeDistributions {
-            targetFormats(TargetFormat.Dmg)
-            packageName = "com.chipmunksmedia.helldivers.remote"
-
-            // Use modified version for Dmg to avoid "Illegal version for 'Dmg'" issue
+            // Use modified version to comply to Dmg and Msi format requirements
             // Tracked in https://github.com/JetBrains/compose-multiplatform/issues/2360
-            packageVersion = libs.versions.versionNameDmg.get()
+            packageVersion = libs.versions.versionNameAlt.get()
         }
     }
 }

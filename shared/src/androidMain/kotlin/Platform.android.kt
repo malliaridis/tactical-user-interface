@@ -1,3 +1,5 @@
+package com.malliaridis.tui
+
 import android.os.Build
 
 class AndroidPlatform : Platform {

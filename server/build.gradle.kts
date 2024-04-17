@@ -4,10 +4,11 @@ plugins {
     application
 }
 
-group = "com.chipmunksmedia.helldivers.remote"
+group = "com.malliaridis.tui"
 version = "1.0.0"
+
 application {
-    mainClass.set("com.chipmunksmedia.helldivers.remote.ApplicationKt")
+    mainClass.set("com.malliaridis.tui.ApplicationKt")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=${extra["development"] ?: "false"}")
 }
 
